@@ -46,21 +46,21 @@ public class UserDAOImp implements UserDAO {
     }
 
     @Override
-    public void findByUsername(String username) {
+    public User findByUsername(String username) {
+        User user = null;
         String sql = "SELECT * FROM User WHERE username = ?";
         Connection conn = null;
         try{
             conn = dataSource.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1,username);
-            User user = null;
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 user = user.createUser(rs.getString("username"),
                         rs.getString("password"),
                         rs.getDouble("property"));
             }
-            System.out.println(user.toString());
+//            System.out.println(user.toString());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
@@ -71,6 +71,7 @@ public class UserDAOImp implements UserDAO {
                 }
             }
         }
+        return user;
     }
 
     @Override
@@ -83,11 +84,11 @@ public class UserDAOImp implements UserDAO {
             PreparedStatement ps = conn.prepareStatement(sql);
             User user = null;
             ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
+            while (rs.next()) {
                 user = user.createUser(rs.getString("username"),
                         rs.getString("password"),
                         rs.getDouble("property"));
-                System.out.println(user.toString());
+//                System.out.println(user.toString());
                 userList.add(user);
             }
         } catch (SQLException e) {

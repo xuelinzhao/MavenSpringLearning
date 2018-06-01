@@ -21,11 +21,19 @@ public class App
                 new ClassPathXmlApplicationContext("Beans.xml");
         UserDAOImp udi = (UserDAOImp) context.getBean("userDaoImp");
         User user = User.createUser("Ze","123",100.0);
-        udi.addUser(user);
+//      udi.addUser(user);
 
         ArrayList<User> userList = udi.findAllUsers();
-        for (User user in userList){
-            System.out.println(user.toString());
+//        System.out.println(userList.size());
+//        for (User u : userList){
+//            System.out.println(u.toString());
+//        }
+        User user1 = udi.findByUsername("Le");
+        if (user1!=null){
+            System.out.println(user1.toString());
+        }else{
+            System.out.println("Not found");
         }
+
     }
 }

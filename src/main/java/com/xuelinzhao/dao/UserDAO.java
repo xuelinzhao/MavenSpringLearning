@@ -10,6 +10,6 @@ import java.util.ArrayList;
 
 public interface UserDAO {
      void addUser(User user);
-     void findByUsername(String username);
+     User findByUsername(String username);
      ArrayList<User> findAllUsers();
 }
