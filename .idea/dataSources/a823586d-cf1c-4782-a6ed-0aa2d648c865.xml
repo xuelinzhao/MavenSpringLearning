@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="test_database">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
+    <root id="1"/>
+    <schema id="2" parent="1" name="test_database">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="performance_schema"/>
+    <schema id="6" parent="1" name="sys"/>
+    <table id="7" parent="2" name="User"/>
+    <column id="8" parent="7" name="username">
+      <Position>1</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="9" parent="7" name="password">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="10" parent="7" name="property">
+      <Position>3</Position>
+      <DataType>double|0</DataType>
+    </column>
+  </database-model>
+</dataSource>
